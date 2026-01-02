@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import CallbackQuery, Message, InlineKeyboardButton, InlineKeyboardMarkup
-from config import MSG_EFFECT
+from config import get_random_effect
 
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
