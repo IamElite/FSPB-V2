@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors.pyromod import ListenerTimeout
-from config import OWNER_ID
+from src.console import OWNER_ID
 import humanize
 
 #===============================================================#

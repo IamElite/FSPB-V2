@@ -1,8 +1,8 @@
 
 import asyncio
-from bot import Bot, web_app
+from . import Bot, web_app
 from pyrogram import compose
-from config import *
+from .console import *
 
 async def main():
     app = []

@@ -1,10 +1,10 @@
-from helper.helper_func import *
+from src.helper.helper_func import *
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 import humanize
-from config import get_random_effect, OWNER_ID
-from plugins.shortner import get_short
-from helper.helper_func import get_messages, force_sub, decode, batch_auto_del_notification
+from src.console import get_random_effect, OWNER_ID
+from src.plugins.shortner import get_short
+from src.helper.helper_func import get_messages, force_sub, decode, batch_auto_del_notification
 import asyncio
 
 #===============================================================#

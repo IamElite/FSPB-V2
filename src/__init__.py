@@ -1,14 +1,14 @@
 #(©) Codeflix_Bots
 
 from aiohttp import web
-from plugins import web_server
+from .plugins import web_server
 
 from pyrogram import Client
 from pyrogram.enums import ParseMode
 import sys
 from datetime import datetime
-from config import LOGGER, PORT, OWNER_ID, SHORT_URL, SHORT_API, SHORT_TUT
-from helper import MongoDB
+from .console import LOGGER, PORT, OWNER_ID, SHORT_URL, SHORT_API, SHORT_TUT
+from .helper import MongoDB
 
 version = "v1.0.0"
 
@@ -20,7 +20,7 @@ class Bot(Client):
             api_hash=api_hash,
             api_id=api_id,
             plugins={
-                "root": "plugins"
+                "root": "src.plugins"
             },
             workers=workers,
             bot_token=token
@@ -174,4 +174,3 @@ async def web_app():
     await app.setup()
     bind_address = "0.0.0.0"
     await web.TCPSite(app, bind_address, PORT).start()
-    
