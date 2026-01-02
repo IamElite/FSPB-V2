@@ -1,0 +1,42 @@
+{
+    "name": "FileStore Bot",
+    "description": "Advanced Telegram File Store Bot",
+    "keywords": [
+        "telegram",
+        "bot",
+        "file-store",
+        "python"
+    ],
+    "stack": "heroku-22",
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "Standard-2X"
+        }
+    },
+    "env": {
+        "TOKEN": {
+            "description": "Telegram Bot Token from @BotFather",
+            "required": true
+        },
+        "DB_URI": {
+            "description": "MongoDB Connection URI",
+            "required": true
+        },
+        "UPSTREAM_REPO": {
+            "description": "GitHub Repository URL for updates",
+            "required": false,
+            "value": ""
+        },
+        "UPSTREAM_BRANCH": {
+            "description": "Git Branch Name",
+            "required": false,
+            "value": "main"
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ]
+}
