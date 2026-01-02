@@ -78,7 +78,7 @@ async def settings(client, query):
     reply_markup = InlineKeyboardMarkup([
         [InlineKeyboardButton('ꜰꜱᴜʙ ᴄʜᴀɴɴᴇʟꜱ', 'fsub'), InlineKeyboardButton('ᴅʙ ᴄʜᴀɴɴᴇʟꜱ', 'db_channels')],
         [InlineKeyboardButton('ᴀᴅᴍɪɴꜱ', 'admins'), InlineKeyboardButton('ᴀᴜᴛᴏ ᴅᴇʟᴇᴛᴇ', 'auto_del')],
-        [InlineKeyboardButton('ʜᴏᴍᴇ', 'home'), InlineKeyboardButton('›› ɴᴇxᴛ', 'settings_page_2')]
+        [InlineKeyboardButton('✕ ᴄʟᴏsᴇ', 'close'), InlineKeyboardButton('›› ɴᴇxᴛ', 'settings_page_2')]
     ])
     await query.message.edit_text(msg, reply_markup=reply_markup)
     return
@@ -120,7 +120,7 @@ async def settings_page_2(client, query):
     reply_markup = InlineKeyboardMarkup([
         [InlineKeyboardButton('ᴘʀᴏᴛᴇᴄᴛ ᴄᴏɴᴛᴇɴᴛ', 'protect'), InlineKeyboardButton('ᴘʜᴏᴛᴏs', 'photos')],
         [InlineKeyboardButton('ᴛᴇxᴛs', 'texts'), InlineKeyboardButton('sʜᴏʀᴛɴᴇʀ', 'shortner')],
-        [InlineKeyboardButton('‹ ᴘʀᴇᴠ', 'settings'), InlineKeyboardButton('ʜᴏᴍᴇ', 'home')]
+        [InlineKeyboardButton('‹ ᴘʀᴇᴠ', 'settings'), InlineKeyboardButton('✕ ᴄʟᴏsᴇ', 'close')]
     ])
     await query.message.edit_text(msg, reply_markup=reply_markup)
     return
