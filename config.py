@@ -1,5 +1,6 @@
 import logging
 import os
+import random
 from logging.handlers import RotatingFileHandler
 
 # Bot Configuration
@@ -7,7 +8,14 @@ LOG_FILE_NAME = "bot.log"
 PORT = '5010'
 OWNER_ID = 7074383232
 
-MSG_EFFECT = 5046509860389126442
+def get_random_effect():
+    """Return a random free Telegram message-effect ID."""
+    EFFECT_IDS = [
+        5104841245755180586,  # 🔥
+        5159385139981059251,  # ❤️
+        5046509860389126442   # 🎉
+    ]
+    return random.choice(EFFECT_IDS)
 
 SHORT_URL = "nanolinks.in" # shortner url 
 SHORT_API = "ae0271c2c57105db2fa209f5b0f20c1a965343f6" 
