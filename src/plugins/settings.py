@@ -1,8 +1,45 @@
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors.pyromod import ListenerTimeout
 from ..console import OWNER_ID
 import humanize
+
+#===============================================================#
+
+@Client.on_message(filters.command('settings') & filters.private)
+async def settings_command(client: Client, message: Message):
+    """Unified /settings command - opens settings menu for admins"""
+    user_id = message.from_user.id
+    
+    if user_id not in client.admins:
+        return await message.reply("❌ **Only admins can use this command!**")
+    
+    # Count active force subscription channels by type
+    total_fsub = len(client.fsub_dict)
+    request_enabled = sum(1 for data in client.fsub_dict.values() if data[2])
+    timer_enabled = sum(1 for data in client.fsub_dict.values() if data[3] > 0)
+    
+    # Count DB channels
+    total_db_channels = len(getattr(client, 'db_channels', {}))
+    primary_db = getattr(client, 'primary_db_channel', client.db)
+    
+    msg = f"""<blockquote>✦ sᴇᴛᴛɪɴɢs ᴏғ @{client.username}</blockquote>
+›› **ꜰꜱᴜʙ ᴄʜᴀɴɴᴇʟs:** `{total_fsub}` (ʀᴇǫᴜᴇsᴛ: {request_enabled}, ᴛɪᴍᴇʀ: {timer_enabled})
+›› **ᴅʙ ᴄʜᴀɴɴᴇʟs:** `{total_db_channels}` (ᴘʀɪᴍᴀʀʏ: `{primary_db}`)
+›› **ᴀᴜᴛᴏ ᴅᴇʟᴇᴛᴇ ᴛɪᴍᴇʀ:** `{client.auto_del}`
+›› **ᴘʀᴏᴛᴇᴄᴛ ᴄᴏɴᴛᴇɴᴛ:** `{"✓ ᴛʀᴜᴇ" if client.protect else "✗ ꜰᴀʟsᴇ"}`
+›› **sʜᴏʀᴛɴᴇʀ:** `{"✓ ᴇɴᴀʙʟᴇᴅ" if getattr(client, 'shortner_enabled', True) else "✗ ᴅɪsᴀʙʟᴇᴅ"}`
+›› **ᴀᴅᴍɪɴs:** `{len(client.admins)}`
+    """
+    reply_markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton('ꜰꜱᴜʙ ᴄʜᴀɴɴᴇʟꜱ', 'fsub'), InlineKeyboardButton('ᴅʙ ᴄʜᴀɴɴᴇʟꜱ', 'db_channels')],
+        [InlineKeyboardButton('ᴀᴅᴍɪɴꜱ', 'admins'), InlineKeyboardButton('ᴀᴜᴛᴏ ᴅᴇʟᴇᴛᴇ', 'auto_del')],
+        [InlineKeyboardButton('ᴛᴇxᴛs', 'texts'), InlineKeyboardButton('ᴘʜᴏᴛᴏs', 'photos')],
+        [InlineKeyboardButton('sʜᴏʀᴛɴᴇʀ', 'shortner'), InlineKeyboardButton('ᴘʀᴏᴛᴇᴄᴛ ᴄᴏɴᴛᴇɴᴛ', 'protect')],
+        [InlineKeyboardButton('✕ ᴄʟᴏsᴇ', 'close')]
+    ])
+    await message.reply(msg, reply_markup=reply_markup)
+    return
 
 #===============================================================#
 
