@@ -1,11 +1,11 @@
 import requests
 import random
 import string
-from src.console import SHORT_URL, SHORT_API, MESSAGES
+from ..console import SHORT_URL, SHORT_API, MESSAGES
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
 from pyrogram.errors.pyromod import ListenerTimeout
-from src.helper.helper_func import force_sub
+from ..helper.helper_func import force_sub
 
 # ✅ In-memory cache
 shortened_urls_cache = {}

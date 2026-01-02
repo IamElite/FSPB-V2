@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import CallbackQuery, Message, InlineKeyboardButton, InlineKeyboardMarkup
-from src.helper.helper_func import is_bot_admin
+from ..helper.helper_func import is_bot_admin
 
 #===============================================================#
 

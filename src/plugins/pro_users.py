@@ -5,7 +5,7 @@ from pyrogram.types import Message
 from datetime import datetime
 from datetime import timedelta
 import re
-from src.console import OWNER_ID
+from ..console import OWNER_ID
 #--------------------------------
 
 def parse_duration(duration_str: str) -> timedelta:

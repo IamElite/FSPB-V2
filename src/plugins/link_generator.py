@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from src.helper.helper_func import encode, get_message_id
-from src.console import LOGGER
+from ..helper.helper_func import encode, get_message_id
+from ..console import LOGGER
 
 async def get_db_channels_info(client):
     """Get formatted database channels information with links"""
